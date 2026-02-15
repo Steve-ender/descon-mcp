@@ -1,0 +1,4 @@
+# Accepted vulnerabilities with no available upstream patch yet.
+# GHSA-w8v5-vhqr-4h9v / CVE-2025-69872 is transitive via fastmcp dependency chain.
+# Track and remove this ignore as soon as a fixed dependency path is available.
+GHSA-w8v5-vhqr-4h9v

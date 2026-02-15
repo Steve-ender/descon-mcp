@@ -1,0 +1,4 @@
+build==1.4.0
+pyproject_hooks==1.2.0
+pip-audit==2.9.0
+cyclonedx-bom==7.2.1

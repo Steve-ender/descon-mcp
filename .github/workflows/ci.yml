@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  test-and-gate:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install
+        shell: pwsh
+        run: |
+          python -m venv .venv
+          .\.venv\Scripts\python.exe -m pip install --upgrade pip
+          .\.venv\Scripts\python.exe -m pip install -e .[dev,ocr,vision]
+          .\.venv\Scripts\python.exe -m pip install -r requirements-release.txt
+
+      - name: Release Gate (strict security)
+        shell: pwsh
+        env:
+          NOVAFORGE_STRICT_SECURITY_GATE: "1"
+        run: |
+          .\.venv\Scripts\python.exe scripts\release_gate.py
