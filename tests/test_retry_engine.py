@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from novaforge.engines.retry_engine import retry_call
+from descon.engines.retry_engine import retry_call
 
 
 def test_retry_call_eventually_succeeds():

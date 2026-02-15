@@ -16,10 +16,10 @@ except ModuleNotFoundError:
 
 ensure_project_root_on_path()
 
-from novaforge.config import load_settings
-from novaforge.paths import artifacts_subdir
-from novaforge.state import STATE
-from novaforge.tools.orchestration_tools import execute_plan
+from descon.config import load_settings
+from descon.paths import artifacts_subdir
+from descon.state import STATE
+from descon.tools.orchestration_tools import execute_plan
 
 
 @dataclass
@@ -126,7 +126,7 @@ async def _worker_loop(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run multi-session soak for NovaForge orchestration stability.")
+    parser = argparse.ArgumentParser(description="Run multi-session soak for Descon orchestration stability.")
     parser.add_argument("--duration-seconds", type=int, default=120, help="Total soak duration in seconds")
     parser.add_argument("--workers", type=int, default=3, help="Concurrent worker sessions")
     parser.add_argument("--preset", choices=["core"], default="core", help="Task preset")

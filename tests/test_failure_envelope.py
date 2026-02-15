@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import asyncio
 
-from novaforge.config import load_settings
-from novaforge.failure_envelope import analyze_failure_envelope
-from novaforge.state import STATE
-import novaforge.tools.orchestration_tools as orchestration_tools
+from descon.config import load_settings
+from descon.failure_envelope import analyze_failure_envelope
+from descon.state import STATE
+import descon.tools.orchestration_tools as orchestration_tools
 
 
 def test_failure_envelope_detects_safe_mode_confirm_blocker():

@@ -2,4 +2,4 @@ include LICENSE
 include README.md
 include requirements-production.txt
 include requirements-release.txt
-recursive-include novaforge py.typed
+recursive-include descon py.typed

@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-import novaforge.tools.action_tools as action_tools
-import novaforge.tools.orchestration_tools as orchestration_tools
-import novaforge.tools.window_tools as window_tools
+import descon.tools.action_tools as action_tools
+import descon.tools.orchestration_tools as orchestration_tools
+import descon.tools.window_tools as window_tools
 
 
 class _FakeMCP:

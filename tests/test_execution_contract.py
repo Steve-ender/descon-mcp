@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import asyncio
 
-from novaforge.config import load_settings
-from novaforge.state import STATE
-import novaforge.tools.orchestration_tools as orchestration_tools
+from descon.config import load_settings
+from descon.state import STATE
+import descon.tools.orchestration_tools as orchestration_tools
 
 
 def test_desktop_act_step_contract_shape():

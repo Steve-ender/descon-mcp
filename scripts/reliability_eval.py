@@ -16,10 +16,10 @@ except ModuleNotFoundError:
 
 ensure_project_root_on_path()
 
-from novaforge.config import load_settings
-from novaforge.paths import artifacts_subdir
-from novaforge.state import STATE
-from novaforge.tools.orchestration_tools import execute_plan
+from descon.config import load_settings
+from descon.paths import artifacts_subdir
+from descon.state import STATE
+from descon.tools.orchestration_tools import execute_plan
 
 
 RELIABILITY_SESSION_ID = "script_reliability_eval"
@@ -82,7 +82,7 @@ def _default_live_desktop_scenarios() -> list[Scenario]:
                 {"action": "launch_app", "command": "notepad.exe", "process_name_for_policy": "notepad", "confirm": True},
                 {"action": "wait", "time_ms": 800},
                 {"action": "focus_window", "title_regex": ".*Notepad.*"},
-                {"action": "type", "text": f"NovaForge live reliability eval at {now}"},
+                {"action": "type", "text": f"Descon live reliability eval at {now}"},
                 {"action": "wait", "time_ms": 200},
                 {"action": "close_app", "name_filter": "notepad", "confirm": True},
             ],
@@ -96,7 +96,7 @@ def _default_live_desktop_scenarios() -> list[Scenario]:
                 {"action": "launch_app", "command": "notepad.exe", "process_name_for_policy": "notepad", "confirm": True},
                 {"action": "wait", "time_ms": 900},
                 {"action": "focus_window", "title_regex": ".*Notepad.*"},
-                {"action": "type", "text": f"Saved by NovaForge live reliability eval at {now}"},
+                {"action": "type", "text": f"Saved by Descon live reliability eval at {now}"},
                 {"action": "hotkey", "keys": ["ctrl", "s"]},
                 {"action": "wait", "time_ms": 700},
                 {"action": "type", "text": str(note_path)},
@@ -263,7 +263,7 @@ def _compare_baseline(current: list[dict[str, Any]], baseline_payload: dict[str,
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run NovaForge reliability evaluation scenarios.")
+    parser = argparse.ArgumentParser(description="Run Descon reliability evaluation scenarios.")
     parser.add_argument("--repeats", type=int, default=20, help="Runs per scenario")
     parser.add_argument("--preset", choices=["core", "live_desktop"], default="core", help="Built-in scenario preset")
     parser.add_argument("--scenarios", type=str, default="", help="Optional JSON scenario file")

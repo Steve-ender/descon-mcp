@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from novaforge.schemas import validate_plan_with_errors
+from descon.schemas import validate_plan_with_errors
 
 
 def test_schema_accepts_focus_guard_step():

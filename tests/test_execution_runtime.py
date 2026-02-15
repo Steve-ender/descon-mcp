@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from novaforge.execution_runtime import RuntimeController, policy_from_options
+from descon.execution_runtime import RuntimeController, policy_from_options
 
 
 def test_policy_profiles():

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from novaforge.config import invalidate_settings_cache
+from descon.config import invalidate_settings_cache
 
 
 @pytest.fixture(autouse=True)

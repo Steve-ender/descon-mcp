@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from novaforge.engines.screen_engine import SCREEN_ENGINE
+from descon.engines.screen_engine import SCREEN_ENGINE
 
 
 def test_resolve_monitor_clamps_out_of_range_indices():
@@ -39,7 +39,7 @@ def test_capture_creates_missing_parent_directory(monkeypatch, tmp_path: Path):
         def __exit__(self, *args):
             pass
 
-    import novaforge.engines.screen_engine as se_mod
+    import descon.engines.screen_engine as se_mod
     monkeypatch.setattr(se_mod, "mss", lambda: _Sct())
     out_path = tmp_path / "nested" / "screens" / "shot.png"
     assert not out_path.parent.exists()

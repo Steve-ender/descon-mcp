@@ -10,13 +10,13 @@ except ModuleNotFoundError:
 
 ensure_project_root_on_path()
 
-from novaforge.config import load_settings
-from novaforge.engines.activity_indicator import ACTIVITY_INDICATOR
-from novaforge.paths import artifacts_subdir
-from novaforge.engines.screen_engine import SCREEN_ENGINE
-from novaforge.engines.window_engine import WINDOW_ENGINE
-from novaforge.state import STATE
-from novaforge.tools.orchestration_tools import execute_plan
+from descon.config import load_settings
+from descon.engines.activity_indicator import ACTIVITY_INDICATOR
+from descon.paths import artifacts_subdir
+from descon.engines.screen_engine import SCREEN_ENGINE
+from descon.engines.window_engine import WINDOW_ENGINE
+from descon.state import STATE
+from descon.tools.orchestration_tools import execute_plan
 
 
 SMOKE_SESSION_ID = "script_production_smoke"

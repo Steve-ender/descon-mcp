@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from novaforge.tools.compiler_tools import _compile_intent
+from descon.tools.compiler_tools import _compile_intent
 
 
 def test_compile_launch_app_injects_confirm_true_by_default():

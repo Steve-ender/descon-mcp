@@ -1,7 +1,7 @@
 """Unit tests for UIA tree engine data classes and formatting."""
 from __future__ import annotations
 
-from novaforge.engines.uia_tree_engine import (
+from descon.engines.uia_tree_engine import (
     InteractiveElement,
     ScrollableElement,
     UIASnapshot,

@@ -1,7 +1,7 @@
 # Deployment Guide
 
 ## Scope
-This guide covers production deployment of `novaforge-mcp` on Windows hosts for Codex CLI usage.
+This guide covers production deployment of `descon-mcp` on Windows hosts for Codex CLI usage.
 
 ## 1. Prepare Host
 - Install Python 3.11+ (64-bit).
@@ -10,11 +10,11 @@ This guide covers production deployment of `novaforge-mcp` on Windows hosts for 
 
 ## 2. Install From Wheel (Recommended)
 ```powershell
-cd C:\deploy\novaforge_mcp
+cd C:\deploy\descon_mcp
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install --no-deps .\dist\novaforge_mcp-0.1.0-py3-none-any.whl
+python -m pip install --no-deps .\dist\descon_mcp-0.1.0-py3-none-any.whl
 python -m pip install -r .\requirements-production.txt
 python -m pip install -r .\requirements-release.txt
 ```
@@ -33,7 +33,7 @@ Expected result: `OK` and a report under `artifacts\release_gate\`.
 
 ## 5. Start Server
 ```powershell
-.\.venv\Scripts\novaforge-mcp
+.\.venv\Scripts\descon-mcp
 ```
 
 ## 6. Operational Recommendations

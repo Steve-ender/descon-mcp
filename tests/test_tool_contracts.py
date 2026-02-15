@@ -8,22 +8,22 @@ from typing import Any, Callable
 
 import pytest
 
-import novaforge.tools.action_tools as action_tools
-import novaforge.tools.file_tools as file_tools
-import novaforge.tools.health_tools as health_tools
-import novaforge.tools.input_tools as input_tools
-import novaforge.tools.notify_tools as notify_tools
-import novaforge.tools.inspect_tools as inspect_tools
-import novaforge.tools.orchestration_tools as orchestration_tools
-import novaforge.tools.recording_tools as recording_tools
-import novaforge.tools.session_tools as session_tools
-import novaforge.tools.shell_tools as shell_tools
-import novaforge.tools.snapshot_tools as snapshot_tools
-import novaforge.tools.transaction_tools as transaction_tools
-import novaforge.tools.vision_tools as vision_tools
-import novaforge.tools.wait_tools as wait_tools
-import novaforge.tools.window_tools as window_tools
-from novaforge.state import STATE
+import descon.tools.action_tools as action_tools
+import descon.tools.file_tools as file_tools
+import descon.tools.health_tools as health_tools
+import descon.tools.input_tools as input_tools
+import descon.tools.notify_tools as notify_tools
+import descon.tools.inspect_tools as inspect_tools
+import descon.tools.orchestration_tools as orchestration_tools
+import descon.tools.recording_tools as recording_tools
+import descon.tools.session_tools as session_tools
+import descon.tools.shell_tools as shell_tools
+import descon.tools.snapshot_tools as snapshot_tools
+import descon.tools.transaction_tools as transaction_tools
+import descon.tools.vision_tools as vision_tools
+import descon.tools.wait_tools as wait_tools
+import descon.tools.window_tools as window_tools
+from descon.state import STATE
 
 
 # --- Core server tools (15 tools) ---
@@ -186,7 +186,7 @@ def _patch_runtime(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setattr(inspect_tools.OCR_ENGINE, "read_text_local_model", lambda image_path: {"text": "abc", "chars": 3, "backend": "local_model"})
 
     # UIA tree engine mock
-    from novaforge.engines.uia_tree_engine import UIASnapshot
+    from descon.engines.uia_tree_engine import UIASnapshot
     _fake_snapshot = UIASnapshot(interactive=[], scrollable=[], dom_text=[], elapsed_ms=50)
     monkeypatch.setattr(inspect_tools.UIA_TREE_ENGINE, "snapshot", lambda *a, **kw: _fake_snapshot)
 
@@ -314,7 +314,7 @@ def test_register_tools_contract_and_invoke(monkeypatch: pytest.MonkeyPatch, tmp
 
 
 def test_session_policy_reflects_env_changes_after_registration(monkeypatch: pytest.MonkeyPatch):
-    from novaforge.config import invalidate_settings_cache
+    from descon.config import invalidate_settings_cache
 
     fake = FakeMCP()
     session_tools.register_session_tools(fake)

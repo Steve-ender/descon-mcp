@@ -1,13 +1,13 @@
 [project]
-name = "novaforge-mcp"
+name = "descon-mcp"
 version = "0.1.0"
-description = "NovaForge MCP: high-capability local Windows desktop automation server"
+description = "Descon MCP: high-capability local Windows desktop automation server"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [
-  {name = "NovaForge Contributors"}
+  {name = "Descon Contributors"}
 ]
 keywords = ["mcp", "desktop-automation", "windows", "ui-automation", "screen-control"]
 classifiers = [
@@ -41,24 +41,24 @@ vision = ["opencv-python>=4.10.0.84", "numpy>=2.0.0"]
 dev = ["pytest>=8.3.0", "build>=1.4.0", "pip-audit>=2.9.0", "cyclonedx-bom>=7.2.1"]
 
 [project.urls]
-Homepage = "https://github.com/novaforge/novaforge-mcp"
-Repository = "https://github.com/novaforge/novaforge-mcp"
-Documentation = "https://github.com/novaforge/novaforge-mcp#readme"
-Issues = "https://github.com/novaforge/novaforge-mcp/issues"
+Homepage = "https://github.com/descon/descon-mcp"
+Repository = "https://github.com/descon/descon-mcp"
+Documentation = "https://github.com/descon/descon-mcp#readme"
+Issues = "https://github.com/descon/descon-mcp/issues"
 
 [project.scripts]
-novaforge-mcp = "novaforge.server:main"
-novaforge-admin = "novaforge.admin_server:main"
+descon-mcp = "descon.server:main"
+descon-admin = "descon.admin_server:main"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["novaforge*"]
+include = ["descon*"]
 
 [tool.setuptools.package-data]
-novaforge = ["py.typed"]
+descon = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

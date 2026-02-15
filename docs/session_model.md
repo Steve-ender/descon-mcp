@@ -1,6 +1,6 @@
 # Session Model
 
-NovaForge state is session-scoped. Each session has independent:
+Descon state is session-scoped. Each session has independent:
 
 - lifecycle (`active`, `paused`, `cancel_requested`, `emergency_stop`)
 - focus/binding hints (`focused_window_*`, `bound_window_*`)

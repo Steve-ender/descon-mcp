@@ -3,7 +3,7 @@ from __future__ import annotations
 import builtins
 import importlib
 
-import novaforge.engines.ocr_engine as ocr_engine
+import descon.engines.ocr_engine as ocr_engine
 
 
 def test_rapidocr_init_independent_from_pytesseract_import(monkeypatch):

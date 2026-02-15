@@ -1,6 +1,6 @@
 # Execution Contract
 
-NovaForge `desktop_act` step outputs must be canonical and machine-readable.
+Descon `desktop_act` step outputs must be canonical and machine-readable.
 
 ## Step Envelope
 

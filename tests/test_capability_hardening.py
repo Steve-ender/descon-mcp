@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import asyncio
 
-from novaforge.config import load_settings
-from novaforge.state import STATE
-import novaforge.tools.orchestration_tools as orchestration_tools
-import novaforge.tools.wait_tools as wait_tools
-from novaforge.safety import assert_can_run, assert_process_allowed
+from descon.config import load_settings
+from descon.state import STATE
+import descon.tools.orchestration_tools as orchestration_tools
+import descon.tools.wait_tools as wait_tools
+from descon.safety import assert_can_run, assert_process_allowed
 
 
 class _FakeMCP:

@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import asyncio
 
-import novaforge.tools.action_tools as action_tools
-import novaforge.tools.vision_tools as vision_tools
-import novaforge.tools.wait_tools as wait_tools
-from novaforge.errors import ArtifactPathError
-from novaforge.state import STATE
+import descon.tools.action_tools as action_tools
+import descon.tools.vision_tools as vision_tools
+import descon.tools.wait_tools as wait_tools
+from descon.errors import ArtifactPathError
+from descon.state import STATE
 
 
 class _FakeMCP:

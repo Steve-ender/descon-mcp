@@ -6,11 +6,11 @@ import time
 
 import pytest
 
-from novaforge.config import load_settings
-from novaforge.elevated_broker import ElevatedBrokerClient
-from novaforge.state import STATE
-import novaforge.tools.orchestration_tools as orchestration_tools
-from novaforge.elevated_broker import ELEVATED_BROKER
+from descon.config import load_settings
+from descon.elevated_broker import ElevatedBrokerClient
+from descon.state import STATE
+import descon.tools.orchestration_tools as orchestration_tools
+from descon.elevated_broker import ELEVATED_BROKER
 
 
 def test_broker_should_route_force_broker_when_enabled(monkeypatch):

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from novaforge.engines.window_engine import WINDOW_ENGINE
+from descon.engines.window_engine import WINDOW_ENGINE
 
 
 class _FakeWindow:

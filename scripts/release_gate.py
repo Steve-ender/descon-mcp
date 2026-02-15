@@ -63,7 +63,7 @@ def main() -> int:
     soak_min_pass_rate = os.getenv("NOVAFORGE_SOAK_MIN_PASS_RATE", "0.99").strip() or "0.99"
     soak_min_runs_per_worker = os.getenv("NOVAFORGE_SOAK_MIN_RUNS_PER_WORKER", "1").strip() or "1"
 
-    steps.append(run_step("compileall", [py, "-m", "compileall", "novaforge", "scripts", "tests"], cwd=root))
+    steps.append(run_step("compileall", [py, "-m", "compileall", "descon", "scripts", "tests"], cwd=root))
     steps.append(run_step("pytest", [py, "-m", "pytest"], cwd=root))
     steps.append(run_step("production_smoke", [py, "scripts/production_smoke.py"], cwd=root))
     steps.append(run_step("basic_reliable_benchmark", [py, "scripts/basic_reliable_benchmark.py"], cwd=root))

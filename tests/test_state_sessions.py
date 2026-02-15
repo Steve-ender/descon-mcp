@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from novaforge.config import load_settings
-from novaforge.safety import assert_can_run
-from novaforge.state import STATE
-import novaforge.tools.session_tools as session_tools
+from descon.config import load_settings
+from descon.safety import assert_can_run
+from descon.state import STATE
+import descon.tools.session_tools as session_tools
 
 
 class _FakeMCP:

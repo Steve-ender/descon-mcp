@@ -12,10 +12,10 @@ except ModuleNotFoundError:
 
 ensure_project_root_on_path()
 
-from novaforge.config import load_settings
-from novaforge.paths import artifacts_subdir
-from novaforge.state import STATE
-from novaforge.tools.orchestration_tools import execute_plan
+from descon.config import load_settings
+from descon.paths import artifacts_subdir
+from descon.state import STATE
+from descon.tools.orchestration_tools import execute_plan
 
 
 BENCHMARK_SESSION_ID = "script_basic_reliable_benchmark"

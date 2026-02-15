@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from novaforge.config import invalidate_settings_cache, load_settings
+from descon.config import invalidate_settings_cache, load_settings
 
 
 def test_config_sanitizes_invalid_values(monkeypatch):
@@ -52,11 +52,11 @@ def test_config_artifacts_dir_from_env(monkeypatch, tmp_path: Path):
 def test_config_broker_flags(monkeypatch):
     invalidate_settings_cache()
     monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
-    monkeypatch.setenv("NOVAFORGE_ELEVATED_BROKER_COMMAND", "python -m novaforge.elevated_broker_server")
+    monkeypatch.setenv("NOVAFORGE_ELEVATED_BROKER_COMMAND", "python -m descon.elevated_broker_server")
     monkeypatch.setenv("NOVAFORGE_ELEVATED_BROKER_TIMEOUT_MS", "20000")
     monkeypatch.setenv("NOVAFORGE_BROKER_ROUTE_ON_PRIVILEGE_MISMATCH", "0")
     settings = load_settings()
     assert settings.enable_elevated_broker is True
-    assert settings.elevated_broker_command == "python -m novaforge.elevated_broker_server"
+    assert settings.elevated_broker_command == "python -m descon.elevated_broker_server"
     assert settings.elevated_broker_timeout_ms == 20000
     assert settings.broker_route_on_privilege_mismatch is False

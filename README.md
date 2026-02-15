@@ -1,4 +1,4 @@
-# NovaForge MCP (Prototype)
+# Descon MCP (Prototype)
 
 Local-first MCP server for full Windows desktop automation.
 
@@ -48,16 +48,16 @@ Local-first MCP server for full Windows desktop automation.
 
 ## Run
 ```powershell
-cd C:\Users\obeng\Project_NovaForge_MCP\prototype\novaforge_mcp
+cd C:\Users\obeng\Project_Descon_MCP\prototype\descon_mcp
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -e .[ocr,vision]
-novaforge-mcp
+descon-mcp
 ```
 
 ## Quality Gates
 ```powershell
-cd C:\Users\obeng\Project_NovaForge_MCP\prototype\novaforge_mcp
+cd C:\Users\obeng\Project_Descon_MCP\prototype\descon_mcp
 .\.venv\Scripts\python.exe -m pip install -e .[dev]
 .\.venv\Scripts\python.exe -m pip install -r requirements-release.txt
 .\.venv\Scripts\python.exe scripts\release_gate.py
@@ -66,7 +66,7 @@ The gate runs `compileall`, `pytest`, `scripts/production_smoke.py`, `scripts/ba
 
 ## Reliability Eval Harness
 ```powershell
-cd C:\Users\obeng\Project_NovaForge_MCP\prototype\novaforge_mcp
+cd C:\Users\obeng\Project_Descon_MCP\prototype\descon_mcp
 .\.venv\Scripts\python.exe scripts\reliability_eval.py --preset core --repeats 20
 ```
 This writes scenario-level reliability metrics (pass rate, p95 latency, flakiness, MTTR attempts, error-code histogram) to `artifacts/reliability_eval/`.
@@ -150,7 +150,7 @@ See `docs/execution_contract.md`, `docs/runtime_profiles.md`, and `docs/session_
 
 ## Production Packaging
 ```powershell
-cd C:\Users\obeng\Project_NovaForge_MCP\prototype\novaforge_mcp
+cd C:\Users\obeng\Project_Descon_MCP\prototype\descon_mcp
 .\.venv\Scripts\python.exe scripts\package_release.py
 ```
 This produces wheel/sdist in `dist/` and checksum manifest files in `artifacts/release/`.

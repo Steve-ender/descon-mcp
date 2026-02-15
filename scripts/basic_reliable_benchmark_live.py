@@ -14,11 +14,11 @@ except ModuleNotFoundError:
 
 ensure_project_root_on_path()
 
-from novaforge.config import load_settings
-from novaforge.paths import artifacts_subdir
-from novaforge.state import STATE
-from novaforge.tools.orchestration_tools import execute_plan
-from novaforge.engines.window_engine import WINDOW_ENGINE
+from descon.config import load_settings
+from descon.paths import artifacts_subdir
+from descon.state import STATE
+from descon.tools.orchestration_tools import execute_plan
+from descon.engines.window_engine import WINDOW_ENGINE
 
 
 LIVE_BENCHMARK_SESSION_ID = "script_basic_reliable_benchmark_live"
@@ -39,7 +39,7 @@ def _tasks(note_path: Path) -> list[dict[str, object]]:
                 {"action": "launch_app", "command": "notepad.exe", "process_name_for_policy": "notepad", "confirm": True},
                 {"action": "wait", "time_ms": 900},
                 {"action": "focus_window", "title_regex": ".*Notepad.*"},
-                {"action": "type", "text": f"NovaForge live benchmark run at {now}"},
+                {"action": "type", "text": f"Descon live benchmark run at {now}"},
                 {"action": "wait", "time_ms": 300},
                 {"action": "screenshot"},
             ],
@@ -51,7 +51,7 @@ def _tasks(note_path: Path) -> list[dict[str, object]]:
                 {"action": "launch_app", "command": "notepad.exe", "process_name_for_policy": "notepad", "confirm": True},
                 {"action": "wait", "time_ms": 900},
                 {"action": "focus_window", "title_regex": ".*Notepad.*"},
-                {"action": "type", "text": f"Saved by NovaForge basic_reliable benchmark at {now}"},
+                {"action": "type", "text": f"Saved by Descon basic_reliable benchmark at {now}"},
                 {"action": "hotkey", "keys": ["ctrl", "s"]},
                 {"action": "wait", "time_ms": 900},
                 {"action": "type", "text": str(note_path)},
