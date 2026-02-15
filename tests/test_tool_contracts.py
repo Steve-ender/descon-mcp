@@ -321,13 +321,13 @@ def test_session_policy_reflects_env_changes_after_registration(monkeypatch: pyt
     tool = fake.tools["desktop_session"]
 
     invalidate_settings_cache()
-    monkeypatch.setenv("NOVAFORGE_MAX_ACTIONS", "7")
+    monkeypatch.setenv("DESCON_MAX_ACTIONS", "7")
     res1 = tool(action="policy")
     assert res1["ok"] is True
     assert res1["data"]["max_actions"] == 7
 
     invalidate_settings_cache()
-    monkeypatch.setenv("NOVAFORGE_MAX_ACTIONS", "19")
+    monkeypatch.setenv("DESCON_MAX_ACTIONS", "19")
     res2 = tool(action="policy")
     assert res2["ok"] is True
     assert res2["data"]["max_actions"] == 19

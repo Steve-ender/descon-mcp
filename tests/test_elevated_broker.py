@@ -14,7 +14,7 @@ from descon.elevated_broker import ELEVATED_BROKER
 
 
 def test_broker_should_route_force_broker_when_enabled(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     route, reason = ELEVATED_BROKER.should_route_step(
         settings=settings,
@@ -27,7 +27,7 @@ def test_broker_should_route_force_broker_when_enabled(monkeypatch):
 
 
 def test_broker_should_not_route_when_disabled(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "0")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "0")
     settings = load_settings()
     route, reason = ELEVATED_BROKER.should_route_step(
         settings=settings,
@@ -40,7 +40,7 @@ def test_broker_should_not_route_when_disabled(monkeypatch):
 
 
 def test_broker_should_not_route_non_routable_action(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     route, reason = ELEVATED_BROKER.should_route_step(
         settings=settings,
@@ -53,7 +53,7 @@ def test_broker_should_not_route_non_routable_action(monkeypatch):
 
 
 def test_broker_mode_never_disables_routing(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     route, reason = ELEVATED_BROKER.should_route_step(
         settings=settings,
@@ -66,7 +66,7 @@ def test_broker_mode_never_disables_routing(monkeypatch):
 
 
 def test_broker_mode_always_routes_routable_actions(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     route, reason = ELEVATED_BROKER.should_route_step(
         settings=settings,
@@ -79,7 +79,7 @@ def test_broker_mode_always_routes_routable_actions(monkeypatch):
 
 
 def test_broker_mode_always_routes_non_routable_actions_too(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     route, reason = ELEVATED_BROKER.should_route_step(
         settings=settings,
@@ -92,7 +92,7 @@ def test_broker_mode_always_routes_non_routable_actions_too(monkeypatch):
 
 
 def test_broker_mode_always_routes_even_when_disabled_to_fail_fast(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "0")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "0")
     settings = load_settings()
     route, reason = ELEVATED_BROKER.should_route_step(
         settings=settings,
@@ -105,7 +105,7 @@ def test_broker_mode_always_routes_even_when_disabled_to_fail_fast(monkeypatch):
 
 
 def test_broker_disabled_option_string_false_does_not_disable(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     route, reason = ELEVATED_BROKER.should_route_step(
         settings=settings,
@@ -118,7 +118,7 @@ def test_broker_disabled_option_string_false_does_not_disable(monkeypatch):
 
 
 def test_broker_conflicting_route_directives_are_detected(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     route, reason = ELEVATED_BROKER.should_route_step(
         settings=settings,
@@ -131,7 +131,7 @@ def test_broker_conflicting_route_directives_are_detected(monkeypatch):
 
 
 def test_broker_string_false_route_directives_are_not_treated_as_true(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     route, reason = ELEVATED_BROKER.should_route_step(
         settings=settings,
@@ -145,7 +145,7 @@ def test_broker_string_false_route_directives_are_not_treated_as_true(monkeypatc
 
 def test_orchestration_broker_fallback_string_false_does_not_fallback(monkeypatch):
     async def _run():
-        monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+        monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
         monkeypatch.setattr(
             orchestration_tools.ELEVATED_BROKER,
             "should_route_step",
@@ -175,7 +175,7 @@ def test_orchestration_broker_fallback_string_false_does_not_fallback(monkeypatc
 
 def test_orchestration_routes_step_via_broker_when_forced(monkeypatch):
     async def _run():
-        monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+        monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
 
         monkeypatch.setattr(
             orchestration_tools.ELEVATED_BROKER,
@@ -233,7 +233,7 @@ def test_broker_take_response_keeps_unmatched_messages():
 
 
 def test_broker_default_command_uses_current_python(monkeypatch):
-    monkeypatch.delenv("NOVAFORGE_ELEVATED_BROKER_COMMAND", raising=False)
+    monkeypatch.delenv("DESCON_ELEVATED_BROKER_COMMAND", raising=False)
     settings = load_settings()
     client = ElevatedBrokerClient()
     cmd = client._command(settings)
@@ -242,7 +242,7 @@ def test_broker_default_command_uses_current_python(monkeypatch):
 
 def test_orchestration_broker_route_skips_local_foreground_guard(monkeypatch):
     async def _run():
-        monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+        monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
         monkeypatch.setattr(
             orchestration_tools,
             "_guard_foreground_for_step",
@@ -293,7 +293,7 @@ def test_orchestration_broker_route_skips_local_foreground_guard(monkeypatch):
 
 def test_orchestration_noncanonical_broker_step_falls_back_local_when_enabled(monkeypatch):
     async def _run():
-        monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+        monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
         monkeypatch.setattr(
             orchestration_tools.ELEVATED_BROKER,
             "should_route_step",
@@ -331,7 +331,7 @@ def test_orchestration_noncanonical_broker_step_falls_back_local_when_enabled(mo
 
 def test_orchestration_broker_step_ok_false_fails_without_local_fallback(monkeypatch):
     async def _run():
-        monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+        monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
         monkeypatch.setattr(
             orchestration_tools.ELEVATED_BROKER,
             "should_route_step",
@@ -372,7 +372,7 @@ def test_orchestration_broker_step_ok_false_fails_without_local_fallback(monkeyp
 
 def test_orchestration_normalizes_broker_runtime_meta(monkeypatch):
     async def _run():
-        monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+        monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
         monkeypatch.setattr(
             orchestration_tools.ELEVATED_BROKER,
             "should_route_step",
@@ -421,7 +421,7 @@ def test_orchestration_normalizes_broker_runtime_meta(monkeypatch):
 
 def test_orchestration_broker_fallback_local_on_error(monkeypatch):
     async def _run():
-        monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+        monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
         monkeypatch.setattr(
             orchestration_tools.ELEVATED_BROKER,
             "should_route_step",
@@ -453,7 +453,7 @@ def test_orchestration_broker_fallback_local_on_error(monkeypatch):
 
 def test_orchestration_broker_mode_always_disabled_fails_fast(monkeypatch):
     async def _run():
-        monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "0")
+        monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "0")
         STATE.start()
         try:
             res = await orchestration_tools.execute_plan(
@@ -473,7 +473,7 @@ def test_orchestration_broker_mode_always_disabled_fails_fast(monkeypatch):
 
 def test_orchestration_conflicting_route_directives_fail_validation(monkeypatch):
     async def _run():
-        monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+        monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
         STATE.start()
         try:
             res = await orchestration_tools.execute_plan(
@@ -492,7 +492,7 @@ def test_orchestration_conflicting_route_directives_fail_validation(monkeypatch)
 
 
 def test_broker_status_contains_failure_state(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     client = ElevatedBrokerClient()
     client._record_failure("x")
@@ -504,8 +504,8 @@ def test_broker_status_contains_failure_state(monkeypatch):
 
 
 def test_broker_status_marks_default_configuration_source(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
-    monkeypatch.delenv("NOVAFORGE_ELEVATED_BROKER_COMMAND", raising=False)
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.delenv("DESCON_ELEVATED_BROKER_COMMAND", raising=False)
     settings = load_settings()
     client = ElevatedBrokerClient()
     s = client.status(settings)
@@ -514,7 +514,7 @@ def test_broker_status_marks_default_configuration_source(monkeypatch):
 
 
 def test_broker_cooldown_failure_does_not_extend(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     client = ElevatedBrokerClient()
     base = 100000
     client._cooldown_until_ms = base + 3000
@@ -525,7 +525,7 @@ def test_broker_cooldown_failure_does_not_extend(monkeypatch):
 
 
 def test_broker_request_retries_once_on_recoverable_failure(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     client = ElevatedBrokerClient()
 
@@ -555,7 +555,7 @@ def test_broker_request_retries_once_on_recoverable_failure(monkeypatch):
 
 
 def test_broker_request_retries_once_on_timeout_failure(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "1")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "1")
     settings = load_settings()
     client = ElevatedBrokerClient()
 

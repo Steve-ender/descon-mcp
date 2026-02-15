@@ -53,15 +53,15 @@ def main() -> int:
     venv_python = root / ".venv" / "Scripts" / "python.exe"
     py = str(venv_python) if venv_python.exists() else sys.executable
 
-    strict_security = _bool_env("NOVAFORGE_STRICT_SECURITY_GATE", default=False)
-    strict_reliability = _bool_env("NOVAFORGE_STRICT_RELIABILITY_GATE", default=False)
-    strict_soak = _bool_env("NOVAFORGE_STRICT_SOAK_GATE", default=False)
-    reliability_repeats = os.getenv("NOVAFORGE_RELIABILITY_REPEATS", "10").strip() or "10"
-    reliability_preset = os.getenv("NOVAFORGE_RELIABILITY_PRESET", "core").strip() or "core"
-    soak_duration_seconds = os.getenv("NOVAFORGE_SOAK_DURATION_SECONDS", "120").strip() or "120"
-    soak_workers = os.getenv("NOVAFORGE_SOAK_WORKERS", "3").strip() or "3"
-    soak_min_pass_rate = os.getenv("NOVAFORGE_SOAK_MIN_PASS_RATE", "0.99").strip() or "0.99"
-    soak_min_runs_per_worker = os.getenv("NOVAFORGE_SOAK_MIN_RUNS_PER_WORKER", "1").strip() or "1"
+    strict_security = _bool_env("DESCON_STRICT_SECURITY_GATE", default=False)
+    strict_reliability = _bool_env("DESCON_STRICT_RELIABILITY_GATE", default=False)
+    strict_soak = _bool_env("DESCON_STRICT_SOAK_GATE", default=False)
+    reliability_repeats = os.getenv("DESCON_RELIABILITY_REPEATS", "10").strip() or "10"
+    reliability_preset = os.getenv("DESCON_RELIABILITY_PRESET", "core").strip() or "core"
+    soak_duration_seconds = os.getenv("DESCON_SOAK_DURATION_SECONDS", "120").strip() or "120"
+    soak_workers = os.getenv("DESCON_SOAK_WORKERS", "3").strip() or "3"
+    soak_min_pass_rate = os.getenv("DESCON_SOAK_MIN_PASS_RATE", "0.99").strip() or "0.99"
+    soak_min_runs_per_worker = os.getenv("DESCON_SOAK_MIN_RUNS_PER_WORKER", "1").strip() or "1"
 
     steps.append(run_step("compileall", [py, "-m", "compileall", "descon", "scripts", "tests"], cwd=root))
     steps.append(run_step("pytest", [py, "-m", "pytest"], cwd=root))

@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 def artifacts_root() -> Path:
-    raw = (os.getenv("NOVAFORGE_ARTIFACTS_DIR") or "").strip()
+    raw = (os.getenv("DESCON_ARTIFACTS_DIR") or "").strip()
     if raw:
         root = Path(raw).expanduser()
         if not root.is_absolute():

@@ -17,7 +17,7 @@ Descon state is session-scoped. Each session has independent:
 ## Auto-Start Behavior
 
 - `assert_can_run(...)` enforces policy for the resolved session.
-- When `NOVAFORGE_AUTO_START_SESSION=true`, the resolved session is started automatically on first action.
+- When `DESCON_AUTO_START_SESSION=true`, the resolved session is started automatically on first action.
 
 ## Multi-Session Semantics
 

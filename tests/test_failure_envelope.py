@@ -67,7 +67,7 @@ def test_failure_envelope_flags_invalid_step_type():
 
 
 def test_failure_envelope_flags_force_broker_when_disabled(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "0")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "0")
     envelope = analyze_failure_envelope(
         plan=[{"action": "click", "x": 1, "y": 1, "force_broker": True}],
         settings=load_settings(),
@@ -88,7 +88,7 @@ def test_failure_envelope_flags_conflicting_routing_directives():
 
 
 def test_failure_envelope_flags_broker_mode_always_without_broker(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "0")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "0")
     envelope = analyze_failure_envelope(
         plan=[{"action": "click", "x": 1, "y": 1}],
         settings=load_settings(),
@@ -100,7 +100,7 @@ def test_failure_envelope_flags_broker_mode_always_without_broker(monkeypatch):
 
 
 def test_failure_envelope_broker_mode_always_blocker_is_not_duplicated(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "0")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "0")
     envelope = analyze_failure_envelope(
         plan=[{"action": "wait", "time_ms": 1}, {"action": "click", "x": 1, "y": 1}],
         settings=load_settings(),
@@ -112,7 +112,7 @@ def test_failure_envelope_broker_mode_always_blocker_is_not_duplicated(monkeypat
 
 
 def test_failure_envelope_string_false_flags_do_not_trigger_force_routing(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_ELEVATED_BROKER", "0")
+    monkeypatch.setenv("DESCON_ENABLE_ELEVATED_BROKER", "0")
     envelope = analyze_failure_envelope(
         plan=[{"action": "wait", "force_broker": "false", "force_local": "false"}],
         settings=load_settings(),

@@ -177,7 +177,7 @@ def register_vision_tools(mcp: FastMCP) -> None:
 
             if selected in {"host_model", "auto_with_host"}:
                 if not settings.enable_host_ocr:
-                    failures.append("host_model blocked by policy (NOVAFORGE_ENABLE_HOST_OCR=false)")
+                    failures.append("host_model blocked by policy (DESCON_ENABLE_HOST_OCR=false)")
                     if selected == "host_model":
                         raise RuntimeError("host_model OCR is disabled by local policy")
                 elif ctx is None:
@@ -224,7 +224,7 @@ def register_vision_tools(mcp: FastMCP) -> None:
                 str(e),
                 hint=(
                     "Use backend=auto for fallback chain. "
-                    "For host_model, set NOVAFORGE_ENABLE_HOST_OCR=true and ensure client supports MCP sampling; "
+                    "For host_model, set DESCON_ENABLE_HOST_OCR=true and ensure client supports MCP sampling; "
                     "for local fallback install rapidocr/tesseract."
                 ),
                 started_ms=started,

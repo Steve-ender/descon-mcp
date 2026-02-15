@@ -158,7 +158,7 @@ def test_fault_invalid_window_handle_maps_to_validation_error():
 
 
 def test_fault_low_confidence_text_maps_specific_code(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_BEST_EFFORT_OCR", "0")
+    monkeypatch.setenv("DESCON_BEST_EFFORT_OCR", "0")
     monkeypatch.setattr(
         orchestration_tools.OCR_ENGINE,
         "read_text_stable",
@@ -182,7 +182,7 @@ def test_fault_low_confidence_text_maps_specific_code(monkeypatch):
 
 
 def test_canary_read_text_missing_image_maps_path_missing(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_BEST_EFFORT_OCR", "0")
+    monkeypatch.setenv("DESCON_BEST_EFFORT_OCR", "0")
     STATE.start()
     try:
         res = _run(

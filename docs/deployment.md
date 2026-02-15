@@ -56,7 +56,7 @@ Outputs:
 
 ## 8. Strict Security Release Gate
 ```powershell
-$env:NOVAFORGE_STRICT_SECURITY_GATE = '1'
+$env:DESCON_STRICT_SECURITY_GATE = '1'
 .\.venv\Scripts\python.exe scripts\release_gate.py
 ```
 
@@ -64,11 +64,11 @@ Use `security-ignore.txt` to track explicit vulnerability exceptions (one ID per
 
 ## 9. Strict Soak Release Gate
 ```powershell
-$env:NOVAFORGE_STRICT_SOAK_GATE = '1'
-$env:NOVAFORGE_SOAK_DURATION_SECONDS = '120'
-$env:NOVAFORGE_SOAK_WORKERS = '3'
-$env:NOVAFORGE_SOAK_MIN_PASS_RATE = '0.99'
-$env:NOVAFORGE_SOAK_MIN_RUNS_PER_WORKER = '1'
+$env:DESCON_STRICT_SOAK_GATE = '1'
+$env:DESCON_SOAK_DURATION_SECONDS = '120'
+$env:DESCON_SOAK_WORKERS = '3'
+$env:DESCON_SOAK_MIN_PASS_RATE = '0.99'
+$env:DESCON_SOAK_MIN_RUNS_PER_WORKER = '1'
 .\.venv\Scripts\python.exe scripts\release_gate.py
 ```
 

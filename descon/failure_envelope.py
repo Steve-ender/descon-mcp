@@ -85,7 +85,7 @@ def analyze_failure_envelope(
             code="broker_mode_always_without_broker",
             severity="high",
             message="runtime_options.broker_mode=always but elevated broker is disabled.",
-            hint="Enable NOVAFORGE_ENABLE_ELEVATED_BROKER=1 or set broker_mode to auto/never.",
+            hint="Enable DESCON_ENABLE_ELEVATED_BROKER=1 or set broker_mode to auto/never.",
         )
         hard_blockers.append(blocker)
         issues.append(blocker)
@@ -139,7 +139,7 @@ def analyze_failure_envelope(
                 message="Step requests force_broker, but elevated broker is disabled.",
                 step_index=idx,
                 action=action,
-                hint="Enable NOVAFORGE_ENABLE_ELEVATED_BROKER=1 or remove force_broker.",
+                hint="Enable DESCON_ENABLE_ELEVATED_BROKER=1 or remove force_broker.",
             )
             hard_blockers.append(blocker)
             issues.append(blocker)
@@ -171,7 +171,7 @@ def analyze_failure_envelope(
                     message=f"Process '{pname}' is not in allowlist and will be blocked.",
                     step_index=idx,
                     action=action,
-                    hint="Add process to NOVAFORGE_ALLOWLIST or disable hard enforce.",
+                    hint="Add process to DESCON_ALLOWLIST or disable hard enforce.",
                 )
                 hard_blockers.append(blocker)
                 issues.append(blocker)

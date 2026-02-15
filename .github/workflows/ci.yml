@@ -28,6 +28,6 @@ jobs:
       - name: Release Gate (strict security)
         shell: pwsh
         env:
-          NOVAFORGE_STRICT_SECURITY_GATE: "1"
+          DESCON_STRICT_SECURITY_GATE: "1"
         run: |
           .\.venv\Scripts\python.exe scripts\release_gate.py

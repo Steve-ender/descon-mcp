@@ -76,42 +76,42 @@ def load_settings() -> Settings:
     now = time.monotonic()
     if _settings_cache is not None and (now - _cache_time) < _CACHE_TTL:
         return _settings_cache
-    raw_allowlist = os.getenv("NOVAFORGE_ALLOWLIST", "")
+    raw_allowlist = os.getenv("DESCON_ALLOWLIST", "")
     allowlist = {x.strip().lower() for x in raw_allowlist.split(",") if x.strip()}
-    require_allowlist = _to_bool(os.getenv("NOVAFORGE_REQUIRE_ALLOWLIST"), default=False)
-    allowlist_hard_enforce = _to_bool(os.getenv("NOVAFORGE_ALLOWLIST_HARD_ENFORCE"), default=False)
-    max_actions = _to_int(os.getenv("NOVAFORGE_MAX_ACTIONS"), default=0, minimum=0, maximum=1000000)
-    auto_start_session = _to_bool(os.getenv("NOVAFORGE_AUTO_START_SESSION"), default=True)
-    input_failsafe = _to_bool(os.getenv("NOVAFORGE_INPUT_FAILSAFE"), default=False)
-    enable_host_ocr = _to_bool(os.getenv("NOVAFORGE_ENABLE_HOST_OCR"), default=False)
+    require_allowlist = _to_bool(os.getenv("DESCON_REQUIRE_ALLOWLIST"), default=False)
+    allowlist_hard_enforce = _to_bool(os.getenv("DESCON_ALLOWLIST_HARD_ENFORCE"), default=False)
+    max_actions = _to_int(os.getenv("DESCON_MAX_ACTIONS"), default=0, minimum=0, maximum=1000000)
+    auto_start_session = _to_bool(os.getenv("DESCON_AUTO_START_SESSION"), default=True)
+    input_failsafe = _to_bool(os.getenv("DESCON_INPUT_FAILSAFE"), default=False)
+    enable_host_ocr = _to_bool(os.getenv("DESCON_ENABLE_HOST_OCR"), default=False)
     window_resolve_fallback_foreground = _to_bool(
-        os.getenv("NOVAFORGE_WINDOW_RESOLVE_FALLBACK_FOREGROUND"),
+        os.getenv("DESCON_WINDOW_RESOLVE_FALLBACK_FOREGROUND"),
         default=True,
     )
-    strict_window_visibility = _to_bool(os.getenv("NOVAFORGE_STRICT_WINDOW_VISIBILITY"), default=False)
-    strict_privilege_check = _to_bool(os.getenv("NOVAFORGE_STRICT_PRIVILEGE_CHECK"), default=False)
-    allow_unknown_actions = _to_bool(os.getenv("NOVAFORGE_ALLOW_UNKNOWN_ACTIONS"), default=True)
-    best_effort_vision = _to_bool(os.getenv("NOVAFORGE_BEST_EFFORT_VISION"), default=True)
-    best_effort_ocr = _to_bool(os.getenv("NOVAFORGE_BEST_EFFORT_OCR"), default=True)
+    strict_window_visibility = _to_bool(os.getenv("DESCON_STRICT_WINDOW_VISIBILITY"), default=False)
+    strict_privilege_check = _to_bool(os.getenv("DESCON_STRICT_PRIVILEGE_CHECK"), default=False)
+    allow_unknown_actions = _to_bool(os.getenv("DESCON_ALLOW_UNKNOWN_ACTIONS"), default=True)
+    best_effort_vision = _to_bool(os.getenv("DESCON_BEST_EFFORT_VISION"), default=True)
+    best_effort_ocr = _to_bool(os.getenv("DESCON_BEST_EFFORT_OCR"), default=True)
     artifacts_dir = str(artifacts_root())
-    enable_activity_glow = _to_bool(os.getenv("NOVAFORGE_ENABLE_ACTIVITY_GLOW"), default=True)
-    activity_glow_color = _sanitize_hex_color(os.getenv("NOVAFORGE_ACTIVITY_GLOW_COLOR"), default="#00ff88")
+    enable_activity_glow = _to_bool(os.getenv("DESCON_ENABLE_ACTIVITY_GLOW"), default=True)
+    activity_glow_color = _sanitize_hex_color(os.getenv("DESCON_ACTIVITY_GLOW_COLOR"), default="#00ff88")
     activity_glow_thickness = _to_int(
-        os.getenv("NOVAFORGE_ACTIVITY_GLOW_THICKNESS"),
+        os.getenv("DESCON_ACTIVITY_GLOW_THICKNESS"),
         default=14,
         minimum=2,
         maximum=64,
     )
-    enable_elevated_broker = _to_bool(os.getenv("NOVAFORGE_ENABLE_ELEVATED_BROKER"), default=False)
-    elevated_broker_command = (os.getenv("NOVAFORGE_ELEVATED_BROKER_COMMAND") or "").strip()
+    enable_elevated_broker = _to_bool(os.getenv("DESCON_ENABLE_ELEVATED_BROKER"), default=False)
+    elevated_broker_command = (os.getenv("DESCON_ELEVATED_BROKER_COMMAND") or "").strip()
     elevated_broker_timeout_ms = _to_int(
-        os.getenv("NOVAFORGE_ELEVATED_BROKER_TIMEOUT_MS"),
+        os.getenv("DESCON_ELEVATED_BROKER_TIMEOUT_MS"),
         default=15000,
         minimum=1000,
         maximum=180000,
     )
     broker_route_on_privilege_mismatch = _to_bool(
-        os.getenv("NOVAFORGE_BROKER_ROUTE_ON_PRIVILEGE_MISMATCH"),
+        os.getenv("DESCON_BROKER_ROUTE_ON_PRIVILEGE_MISMATCH"),
         default=True,
     )
     settings = Settings(

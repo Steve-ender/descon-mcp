@@ -36,7 +36,7 @@ def test_ensure_window_ready_revives_hidden_window(monkeypatch):
 
 
 def test_ensure_window_ready_raises_on_privilege_mismatch(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_STRICT_PRIVILEGE_CHECK", "1")
+    monkeypatch.setenv("DESCON_STRICT_PRIVILEGE_CHECK", "1")
     w = _FakeWindow()
     w.visible = True
     monkeypatch.setattr(WINDOW_ENGINE, "_process_elevation", lambda pid: "elevated")
@@ -46,7 +46,7 @@ def test_ensure_window_ready_raises_on_privilege_mismatch(monkeypatch):
 
 
 def test_resolve_window_falls_back_to_foreground_when_enabled(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_WINDOW_RESOLVE_FALLBACK_FOREGROUND", "1")
+    monkeypatch.setenv("DESCON_WINDOW_RESOLVE_FALLBACK_FOREGROUND", "1")
     sentinel = object()
     monkeypatch.setattr(WINDOW_ENGINE, "_window_from_title_regex", lambda title_regex: (_ for _ in ()).throw(RuntimeError("no match")))
     monkeypatch.setattr(WINDOW_ENGINE, "_window_from_foreground", lambda: sentinel)

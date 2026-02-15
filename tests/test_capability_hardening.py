@@ -46,7 +46,7 @@ def test_autostart_session_allows_tool_call_without_manual_start(monkeypatch):
 
 
 def test_orchestration_read_text_host_model_supported(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_HOST_OCR", "1")
+    monkeypatch.setenv("DESCON_ENABLE_HOST_OCR", "1")
     monkeypatch.setattr(
         orchestration_tools,
         "_read_text_host_model",
@@ -107,7 +107,7 @@ def test_allow_unknown_actions_does_not_bypass_known_action_validation():
 
 
 def test_orchestration_host_model_without_ctx_best_effort(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_ENABLE_HOST_OCR", "1")
+    monkeypatch.setenv("DESCON_ENABLE_HOST_OCR", "1")
     STATE.start()
     try:
         res = asyncio.run(
@@ -126,8 +126,8 @@ def test_orchestration_host_model_without_ctx_best_effort(monkeypatch):
 
 
 def test_allowlist_soft_mode_does_not_block(monkeypatch):
-    monkeypatch.setenv("NOVAFORGE_REQUIRE_ALLOWLIST", "1")
-    monkeypatch.setenv("NOVAFORGE_ALLOWLIST_HARD_ENFORCE", "0")
+    monkeypatch.setenv("DESCON_REQUIRE_ALLOWLIST", "1")
+    monkeypatch.setenv("DESCON_ALLOWLIST_HARD_ENFORCE", "0")
     settings = load_settings()
     assert_process_allowed(settings, "definitely-not-in-allowlist")
 

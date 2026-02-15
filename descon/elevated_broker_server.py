@@ -84,7 +84,7 @@ def _handle(req: dict[str, Any]) -> dict[str, Any]:
 
 def main() -> None:
     # Prevent recursive broker routing from within broker process.
-    os.environ["NOVAFORGE_BROKER_ROUTE_ON_PRIVILEGE_MISMATCH"] = "0"
+    os.environ["DESCON_BROKER_ROUTE_ON_PRIVILEGE_MISMATCH"] = "0"
     for line in sys.stdin:
         raw = line.strip()
         if not raw:

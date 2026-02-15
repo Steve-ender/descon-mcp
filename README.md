@@ -83,14 +83,14 @@ Optional baseline comparison:
 
 Optional strict release gate integration:
 ```powershell
-$env:NOVAFORGE_STRICT_RELIABILITY_GATE = '1'
-$env:NOVAFORGE_RELIABILITY_PRESET = 'core'   # or live_desktop
-$env:NOVAFORGE_RELIABILITY_REPEATS = '10'
-$env:NOVAFORGE_STRICT_SOAK_GATE = '1'
-$env:NOVAFORGE_SOAK_DURATION_SECONDS = '120'
-$env:NOVAFORGE_SOAK_WORKERS = '3'
-$env:NOVAFORGE_SOAK_MIN_PASS_RATE = '0.99'
-$env:NOVAFORGE_SOAK_MIN_RUNS_PER_WORKER = '1'
+$env:DESCON_STRICT_RELIABILITY_GATE = '1'
+$env:DESCON_RELIABILITY_PRESET = 'core'   # or live_desktop
+$env:DESCON_RELIABILITY_REPEATS = '10'
+$env:DESCON_STRICT_SOAK_GATE = '1'
+$env:DESCON_SOAK_DURATION_SECONDS = '120'
+$env:DESCON_SOAK_WORKERS = '3'
+$env:DESCON_SOAK_MIN_PASS_RATE = '0.99'
+$env:DESCON_SOAK_MIN_RUNS_PER_WORKER = '1'
 .\.venv\Scripts\python.exe scripts\release_gate.py
 ```
 
@@ -101,33 +101,33 @@ Standalone soak runner:
 This writes multi-session soak reports to `artifacts/soak/`.
 
 ## Safety Env Vars
-- `NOVAFORGE_ALLOWLIST` comma-separated executable names allowed for launch/close
-- `NOVAFORGE_REQUIRE_ALLOWLIST` enforce allowlist for process actions (default `false`)
-- `NOVAFORGE_ALLOWLIST_HARD_ENFORCE` hard-block disallowed process launch/close when allowlist is enabled (default `false`)
-- `NOVAFORGE_MAX_ACTIONS` max actions per session (`0` disables limit; default `0`)
-- `NOVAFORGE_AUTO_START_SESSION` auto-start session on first tool call (default `true`)
+- `DESCON_ALLOWLIST` comma-separated executable names allowed for launch/close
+- `DESCON_REQUIRE_ALLOWLIST` enforce allowlist for process actions (default `false`)
+- `DESCON_ALLOWLIST_HARD_ENFORCE` hard-block disallowed process launch/close when allowlist is enabled (default `false`)
+- `DESCON_MAX_ACTIONS` max actions per session (`0` disables limit; default `0`)
+- `DESCON_AUTO_START_SESSION` auto-start session on first tool call (default `true`)
 - `desktop_emergency_stop` is a hard stop until manually cleared via `desktop_emergency_stop(enabled=false)`
-- `NOVAFORGE_INPUT_FAILSAFE` PyAutoGUI corner failsafe (default `false`)
-- `NOVAFORGE_ENABLE_HOST_OCR` set `true` to allow host-model OCR paths
-- `NOVAFORGE_WINDOW_RESOLVE_FALLBACK_FOREGROUND` fallback to current foreground when explicit window target is unresolved (default `true`)
-- `NOVAFORGE_STRICT_WINDOW_VISIBILITY` fail when target remains invisible after revive attempts (default `false`)
-- `NOVAFORGE_STRICT_PRIVILEGE_CHECK` fail on elevation mismatch (default `false`)
-- `NOVAFORGE_ALLOW_UNKNOWN_ACTIONS` map unknown `desktop_act` actions to no-op warnings (default `true`)
-- `NOVAFORGE_BEST_EFFORT_VISION` return non-fatal template miss results where possible (default `true`)
-- `NOVAFORGE_BEST_EFFORT_OCR` return non-fatal empty OCR results where possible (default `true`)
-- `NOVAFORGE_ARTIFACTS_DIR` absolute/relative directory for screenshots, recordings, plans, transactions, smoke reports
+- `DESCON_INPUT_FAILSAFE` PyAutoGUI corner failsafe (default `false`)
+- `DESCON_ENABLE_HOST_OCR` set `true` to allow host-model OCR paths
+- `DESCON_WINDOW_RESOLVE_FALLBACK_FOREGROUND` fallback to current foreground when explicit window target is unresolved (default `true`)
+- `DESCON_STRICT_WINDOW_VISIBILITY` fail when target remains invisible after revive attempts (default `false`)
+- `DESCON_STRICT_PRIVILEGE_CHECK` fail on elevation mismatch (default `false`)
+- `DESCON_ALLOW_UNKNOWN_ACTIONS` map unknown `desktop_act` actions to no-op warnings (default `true`)
+- `DESCON_BEST_EFFORT_VISION` return non-fatal template miss results where possible (default `true`)
+- `DESCON_BEST_EFFORT_OCR` return non-fatal empty OCR results where possible (default `true`)
+- `DESCON_ARTIFACTS_DIR` absolute/relative directory for screenshots, recordings, plans, transactions, smoke reports
 - `desktop_act` runtime loop controls:
   - `runtime_profile`: `basic_reliable|strict|balanced|unrestricted`
   - `runtime_options`: override budgets/guards (`max_steps`, `max_runtime_ms`, `default_retries`, `observe_before_risky`, `safe_mode`, `allow_unknown_actions`)
 
 See `docs/execution_contract.md`, `docs/runtime_profiles.md`, and `docs/session_model.md` for contract, profile, and session semantics.
-- `NOVAFORGE_ENABLE_ACTIVITY_GLOW` show edge glow while session is active (`true` by default)
-- `NOVAFORGE_ACTIVITY_GLOW_COLOR` hex color for edge glow (default `#00ff88`)
-- `NOVAFORGE_ACTIVITY_GLOW_THICKNESS` edge thickness in pixels (default `14`)
+- `DESCON_ENABLE_ACTIVITY_GLOW` show edge glow while session is active (`true` by default)
+- `DESCON_ACTIVITY_GLOW_COLOR` hex color for edge glow (default `#00ff88`)
+- `DESCON_ACTIVITY_GLOW_THICKNESS` edge thickness in pixels (default `14`)
 
 ## Notes
 - OCR requires Tesseract binary installed and available in PATH.
-- Host-model OCR is disabled by default and requires both `NOVAFORGE_ENABLE_HOST_OCR=true` and MCP sampling support.
+- Host-model OCR is disabled by default and requires both `DESCON_ENABLE_HOST_OCR=true` and MCP sampling support.
 - This prototype is local-only and does not require cloud services.
 - Process close by name uses exact executable-name matching (no substring termination).
 - App launch defaults to structured non-shell execution (`shell_mode=false`).
@@ -160,7 +160,7 @@ See `docs/deployment.md` for deployment runbook details.
 
 ## Security Gate
 - `scripts/security_gate.py` runs `pip-audit` and writes `artifacts/security/security_gate_latest.json`.
-- Set `NOVAFORGE_STRICT_SECURITY_GATE=1` to make security findings block `scripts/release_gate.py`.
-- Set `NOVAFORGE_STRICT_SOAK_GATE=1` to require multi-session soak pass in `scripts/release_gate.py`.
+- Set `DESCON_STRICT_SECURITY_GATE=1` to make security findings block `scripts/release_gate.py`.
+- Set `DESCON_STRICT_SOAK_GATE=1` to require multi-session soak pass in `scripts/release_gate.py`.
 
 Use `security-ignore.txt` to track explicit vulnerability exceptions (one ID per line) with documented rationale.
